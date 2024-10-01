@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ultimate Chaos Zone!</title>
+    <style>
+        body {
+            background-color: #FF00FF;
+            font-family: "Papyrus", cursive;
+            color: #00FF00;
+            margin: 0;
+            overflow: hidden;
+            animation: flashingBackground 0.1s infinite;
+        }
+
+        @keyframes flashingBackground {
+            0% { background-color: #FF00FF; }
+            50% { background-color: #FFFF00; }
+            100% { background-color: #00FFFF; }
+        }
+
+        h1 {
+            font-size: 120px;
+            text-shadow: 10px 10px 0px red, -10px -10px 0px cyan;
+            animation: spinTitle 1s linear infinite;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        @keyframes spinTitle {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        .flying-cat, .flying-thing, .crazy-image {
+            position: absolute;
+            width: 100px;
+            animation: fly 3s linear infinite;
+        }
+
+        @keyframes fly {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(100vw, 100vh); }
+        }
+
+        button {
+            position: absolute;
+            font-size: 30px;
+            top: 90%;
+            left: 50%;
+            transform: translateX(-50%);
+            color: red;
+            background-color: blue;
+            padding: 20px;
+            animation: shake 0.5s infinite alternate;
+        }
+
+        @keyframes shake {
+            0% { transform: translate(-50%, -10%); }
+            100% { transform: translate(-50%, 10%); }
+        }
+
+        .crazy-image {
+            width: 150px;
+            height: 150px;
+            animation: spin 4s infinite linear;
+            z-index: 9999;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body onload="initChaos()">
+
+    <h1>ULTIMATE CHAOS ZONE!!!</h1>
+
+    <img src="https://c.tenor.com/ZYYBRG2HfqIAAAAi/nyan-cat.gif" class="flying-cat" style="animation-duration: 6s; animation-timing-function: ease-in-out;">
+    <img src="https://i.pinimg.com/originals/45/74/9d/45749d450fc7a3647be515f4573f7475.gif" class="crazy-image" style="top: 10%; left: 10%; animation-duration: 4s;">
+    <img src="https://media.giphy.com/media/3o72F1Q60XNGGmZFrG/giphy.gif" class="crazy-image" style="top: 50%; left: 50%; animation-duration: 6s;">
+    <img src="https://media.giphy.com/media/l4FGz3a6ZhfLRSz9m/giphy.gif" class="crazy-image" style="top: 80%; left: 80%; animation-duration: 8s;">
+    
+    <marquee direction="right" scrollamount="30" behavior="scroll">SO MUCH CHAOS! CATS FLYING EVERYWHERE! CLICK AT YOUR OWN RISK!</marquee>
+
+    <button onclick="triggerMoreChaos()">DO NOT CLICK ME!</button>
+
+    <audio autoplay loop>
+        <source src="https://www.soundjay.com/button/beep-10.wav" type="audio/wav">
+        <source src="https://www.soundjay.com/button/beep-07.wav" type="audio/wav">
+    </audio>
+
+    <script>
+        function initChaos() {
+            createFlyingThings();
+            setTimeout(showPopups, 1000);
+        }
+
+        function createFlyingThings() {
+            for (let i = 0; i < 20; i++) {
+                const flyingThing = document.createElement("img");
+                flyingThing.src = "https://media.istockphoto.com/id/187722063/photo/funny-man-with-watermelon-helmet-and-goggles.jpg?s=612x612&w=0&k=20&c=gRAm8vtLqdOU8a-mJVt6m_Wnv8pLpa3TBh2vRQP4208="; // Replace with a random flying image
+                flyingThing.className = 'flying-thing';
+                flyingThing.style.top = Math.random() * 100 + "vh";
+                flyingThing.style.left = Math.random() * 100 + "vw";
+                flyingThing.style.animationDuration = (Math.random() * 3 + 3) + "s"; // Random duration
+                document.body.appendChild(flyingThing);
+            }
+        }
+
+        function triggerMoreChaos() {
+            for (let i = 0; i < 10; i++) {
+                const chaosImg = document.createElement("img");
+                chaosImg.src = "https://media.istockphoto.com/id/187722063/photo/funny-man-with-watermelon-helmet-and-goggles.jpg?s=612x612&w=0&k=20&c=gRAm8vtLqdOU8a-mJVt6m_Wnv8pLpa3TBh2vRQP4208="; // Replace with another random crazy image
+                chaosImg.className = 'crazy-image';
+                chaosImg.style.top = Math.random() * 100 + "vh";
+                chaosImg.style.left = Math.random() * 100 + "vw";
+                chaosImg.style.animationDuration = (Math.random() * 3 + 2) + "s"; // Random duration
+                document.body.appendChild(chaosImg);
+            }
+           // alert("YOU CLICKED THE CHAOS BUTTON! MORE CHAOS HAS BEEN UNLEASHED!");
+        }
+
+        //function showPopups() {
+          //  alert('Welcome to the ULTIMATE CHAOS ZONE!');
+          //  alert('Prepare for a wild ride of craziness!');
+        //}
+    </script>
+
+</body>
+</html>
